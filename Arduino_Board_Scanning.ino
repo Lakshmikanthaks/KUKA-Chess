@@ -2,8 +2,6 @@
 #include <Wire.h>
 #include <MCP23017.h>
 
-
-// no-cost stream operator as described at 
 // http://arduiniana.org/libraries/streaming/
 template<class T> inline Print &operator <<(Print &obj, T arg)
 {  
@@ -12,8 +10,6 @@ template<class T> inline Print &operator <<(Print &obj, T arg)
 }
 
 MCP23017 GPIOchipArray[] = {MCP23017(), MCP23017(), MCP23017(), MCP23017(), MCP23017(), MCP23017(), MCP23017(), MCP23017()}; 
-
-
 
 void setup()
 {
@@ -34,7 +30,7 @@ void setup()
 void loop()
 {
     Serial << "----\n";
-  for(uint8_t i=0;i<=2;i++)  {  
+  for(uint8_t i=0;i<=7;i++)  {  
     word buttonStatus = GPIOchipArray[i].digitalWordRead();
     Serial << "Board " << i << ": ";
     Serial.println(buttonStatus, BIN);
